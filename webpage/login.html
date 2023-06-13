@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="boot.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/login.css">
+		<link rel="stylesheet" href="./php/regist.php">
+		<link rel="stylesheet" href="./php/connect.PHP">
+		<link rel="stylesheet" href="./php/index.PHP">
+        <script src="https://kit.fontawesome.com/63f550a101.js" crossorigin="anonymous"></script>
+      </head>
+	<body>
+		
+		
+		<div class="image">
+			<img src="imgs/2.jpg" style="width:100%">
+		  <div class="login-page">
+			<div class="form">
+		
+			  <form class="login-form">
+				<input type="text" id="email" name="email" placeholder="email"/>
+				<input type="password" id="password" name="password" placeholder="password"/>
+        <button type="button" id="submitData" name="submitData" class="registerbtn">Login</button>
+				<p class="message">Not registered? <a href="registeration.html">Create an account</a></p>
+			  </form>
+			</div>
+		  </div>
+		</div>
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+        crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+    </body>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+      import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
+      import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+      import {getDatabase, set, ref, update} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCMz5rDZSSgzDcnFnTHzN8t--aQo1y7-Vs",
+        authDomain: "aaaaa-a4343.firebaseapp.com",
+        databaseURL: "https://aaaaa-a4343-default-rtdb.firebaseio.com",
+        projectId: "aaaaa-a4343",
+        storageBucket: "aaaaa-a4343.appspot.com",
+        messagingSenderId: "1078892181938",
+        appId: "1:1078892181938:web:4e41ce2533929318588cab"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const db = getFirestore(app);
+      const auth = getAuth();
+
+
+      submitData.addEventListener('click', (e) => {
+
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in
+                const user = userCredential.user;
+                // ...
+
+                    location.href = "home.html";
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+            });
+    });
+    </script>
+</html>

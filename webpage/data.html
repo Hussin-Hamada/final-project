@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Reading Data from Firebase Realtime Database</title>
+</head>
+
+<body>
+  <h1>Data from Firebase Realtime Database:</h1>
+  <div id="data"></div>
+
+  <!-- Your Firebase SDK script -->
+
+  <script type="module">
+
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+    import {getDatabase, onValue, ref} from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+    // Initialize Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyCMz5rDZSSgzDcnFnTHzN8t--aQo1y7-Vs",
+        authDomain: "aaaaa-a4343.firebaseapp.com",
+        databaseURL: "https://aaaaa-a4343-default-rtdb.firebaseio.com",
+        projectId: "aaaaa-a4343",
+        storageBucket: "aaaaa-a4343.appspot.com",
+        messagingSenderId: "1078892181938",
+        appId: "1:1078892181938:web:4e41ce2533929318588cab"
+      };
+
+
+
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase();
+        const starCountRef = ref(db, 'ada/12/q');
+        onValue(starCountRef, (snapshot) => {
+            const data = snapshot.val();
+            document.getElementById("data").innerHTML = JSON.stringify(data);
+        });
+
+    // Reference to your database
+    //var database = firebase.database();
+
+    // Reference to the data you want to read
+
+  </script>
+</body>
+
+</html>
